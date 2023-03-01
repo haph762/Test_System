@@ -1,0 +1,89 @@
+<div bsModal #modalUser="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-primary">
+        <h4 class="modal-title pull-left">{{type}} User</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalUser.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" #userForm="ngForm">
+          <div class="row mb-2">
+            <label class="col-md-4 col-form-label" for="account">
+              <strong class="float-right">User Account<span class="red_star">  *</span></strong>
+            </label>
+            <div class="col-md-8">
+              <input type="text"
+                     name="account"
+                     class="form-control"
+                     autocomplete="off"
+                     placeholder="User account"
+                     [disabled]="type === 'Edit'"
+                     [(ngModel)]="user.account" required/>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <label class="col-md-4 col-form-label" for="password">
+              <strong class="float-right">Password<span class="red_star">  *</span></strong>
+            </label>
+            <div class="col-md-8">
+              <input type="password"
+                     name="password"
+                     class="form-control"
+                     placeholder="Password"
+                     [(ngModel)]="user.password" required/>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <label class="col-md-4 col-form-label" for="username">
+              <strong class="float-right">User Name<span class="red_star">  *</span></strong>
+            </label>
+            <div class="col-md-8">
+              <input type="text"
+                     name="username"
+                     class="form-control"
+                     autocomplete="off"
+                     placeholder="User name"
+                     [(ngModel)]="user.name"  required/>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <label class="col-md-4 col-form-label" for="email">
+              <strong class="float-right">Email<span class="red_star">  *</span></strong>
+            </label>
+            <div class="col-md-8">
+              <input type="text"
+                     class="form-control"
+                     autocomplete="off"
+                     placeholder="Email"
+                     [(ngModel)]="user.email" name="emailAdd" required/>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <label class="col-md-4 col-form-label" for="active">
+              <strong class="float-right">Active</strong>
+            </label>
+            <div class="col-md-8 pt-1">
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="is_active" autocomplete="off"
+                       name="is_active" [(ngModel)]="user.is_active">
+                <label class="custom-control-label" for="is_active"></label>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer justify-content-end" style="float: right">
+        <button class="btn btn-danger btn-sm whiteClass"
+                (click)="modalUser.hide()">
+          <i class="fa fa-ban" aria-hidden="true"></i> Cancel
+        </button>
+        <button class="btn btn-success btn-sm whiteClass"
+                (click)="addOrEditUser()" [disabled]="!userForm.valid">
+          <i class="fa fa-check" aria-hidden="true"></i> Save
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
